@@ -1,0 +1,16 @@
+<% include ./header_admin.ejs %>
+
+<form action="/admin/edit-cate" method="POST" role="form">
+<legend>Edit Cate</legend>
+<div class="form-group">
+<label for="">id cate: </label>
+<input type="text" class="form-control" name="txtId" value="<%= cate.id %>">
+</div>
+<div class="form-group">
+<label for="">Name cate: </label>
+<input type="text" class="form-control" name="txtName" value="<%= cate.name %>">
+</div>
+<button type="submit" class="btn btn-primary">Edit</button>
+</form>
+
+<% include ./footer_admin.ejs %>

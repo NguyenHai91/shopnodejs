@@ -1,0 +1,162 @@
+<% include blocks/header.ejs %>
+<link href="/stylesheets/chatbox.css" rel="stylesheet">
+<% include blocks/navbar.ejs %>
+<% include blocks/menu.ejs %>
+<!-- begin:article -->
+<div class="row">
+  <!-- begin:sidebar -->
+  <div class="col-md-3 col-sm-4 sidebar">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- break -->
+        <div class="widget">
+          <div class="widget-title">
+            <h3>Category</h3>
+          </div>
+          <ul class="nav nav-pills nav-stacked">
+            <li class="active"><a href="#">Acessories</a></li>
+            <li><a href="#">Girl</a></li>
+            <li><a href="#">Boy</a></li>
+            <li><a href="#">Edition</a></li>
+          </ul>
+        </div>
+        <!-- break -->
+        <div class="widget">
+          <div class="widget-title">
+            <h3>Payment Confirmation</h3>
+          </div>
+          <p>Already make a payment ? please confirm your payment by filling <a href="confirm.html">this form</a></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- end:sidebar -->
+
+  <!-- begin:content -->
+  <div class="col-md-9 col-sm-8 content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="heading-title">
+          <h2 style="margin: 0px">The <span><%= product.name %></span> <span class="text-yellow">.</span></h2>
+        </div>
+        <div class="row">
+          <!-- begin:product-image-slider -->
+          <div class="col-md-6 col-sm-6">
+            <div id="product-single" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="item active">
+                  <div class="product-single">
+                    <img src="/product/<%= product.image %>" class="img-responsive">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end:product-image-slider -->
+
+          <!-- begin:product-spesification -->
+          <div class="col-md-6 col-sm-6">
+            <div class="single-desc">
+              <form>
+                <span class="visible-xs">
+                  <strong><%= product.name %></strong>
+                </span>
+
+                <table>
+                  <tbody>
+                    <tr class="hidden-xs">
+                      <td><strong>Brand</strong></td>
+                      <td>:</td>
+                      <td><%= cate.name %></td>
+                    </tr>
+                    <tr class="hidden-xs">
+                      <td><strong>Product Code</strong></td>
+                      <td>:</td>
+                      <td id="prd-id"><%= product._id %></td>
+                    </tr>
+                    <tr class="hidden-xs">
+                      <td><strong>Availability</strong></td>
+                      <td>:</td>
+                      <td>In Stock</td>
+                    </tr>
+                    <tr>
+                      <td colspan="3"><span class="price">$<%= product.price %></span></td>
+                    </tr>
+                    <tr>
+                      <td colspan="3">
+                        <select id="slc-color" name="slcColor">
+                          <% colors.forEach(function (item) { %>
+                            <option value="<%= item %>">Color: <%= item %></option>
+                            <% });%>                          
+                            </select>
+                            </td>
+                            <td colspan="3">
+                            <select id="slc-size" name="slcSize">
+                            <% sizes.forEach(function (item) { %>
+                              <option value="<%= item %>">Size: <%= item %></option>
+                              <% });%>                          
+                              </select>
+                              </td>
+                              </tr>
+                              <tr>
+                              <td colspan="3">
+                              <a href="" class="btn btn-sm btn-primary" id="btn-add">Add to Cart</a>
+                              </td>  
+                              </tr>
+                              </tbody>
+                              </table>
+                              </form>
+                              </div>
+                              </div>
+                              <!-- end:product-spesification -->
+                              </div>
+                              <!-- break -->
+                              <!-- begin:product-detail -->
+                              <div class="row">
+                              <div class="col-md-12 content-detail">
+                              <ul id="myTab" class="nav nav-tabs">
+                              <li class="active"><a href="#desc" data-toggle="tab">Description</a></li>
+                              </ul>
+
+                              <div id="myTabContent" class="tab-content">
+                              <div class="tab-pane fade active in" id="desc">
+                              <p><%= product.description %></p>
+                              </div>
+                              </div>
+                              </div>
+                              </div>
+                              <!-- end:product-detail -->
+
+                              <!-- begin:related-product -->
+                              <div class="row">
+                              <div class="col-md-12">
+                              <div class="heading-title">
+                              <h2>Related <span>Product</span> <span class="text-yellow">.</span></h2>
+                              </div>
+
+                              <div class="row product-container" style="position: relative; height: 463.75px;">
+                              <% relatedItem.forEach(function (item) { %>
+                                <div class="col-md-3 col-sm-6 col-xs-6">
+                                <div class="thumbnail product-item">
+                                <a href="/chi-tiet/<%= item.id %>"><img alt="" src="/product/<%= item.image %>"></a>
+                                <div class="caption">
+                                <h5><%= item.name %></h5>
+                                <p>$<%= item.price %></p>
+                                </div>
+                                </div>
+                                </div>
+                                <% }); %>
+                                </div>
+                                </div>
+                                </div>
+                                <!-- end:related-product -->
+
+                                </div>
+                                </div>
+                                </div>
+                                <!-- end:content -->
+                                </div>
+                                <!-- end:article -->
+
+                                <% include blocks/footer.ejs %>

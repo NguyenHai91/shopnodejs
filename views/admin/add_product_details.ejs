@@ -1,0 +1,39 @@
+<% include ./header_admin.ejs %>
+
+<legend>Add Product Details</legend>
+
+<div class="form-group">
+<label for="">List Images Product: </label>
+<form id="upload-widget" method="post" action="/admin/product/upload-images" class="dropzone">
+<div class="fallback">
+<input name="fImage" type="file" />
+</div>
+</form>
+</div>
+<form action="/admin/product/add-details" method="POST" role="form" >
+
+<div class="form-group">
+<label for="">Name Product: </label>
+<input type="text" class="form-control" value="<%= prdName %>" name="txtName">
+<input type="hidden" class="form-control" value="<%= prdId %>" name="txtId">
+</div>
+
+<div class="form-group">
+<label for="">Size: </label>
+<input type="text" class="form-control" placeholder="size" name="txtSize">
+</div>
+<div class="form-group">
+<label for="">Color: </label>
+<input type="text" class="form-control" placeholder="color" name="txtColor">
+</div>
+<div class="form-group">
+<label for="">Quantity: </label>
+<input type="text" class="form-control" placeholder="quantity" name="numQuant">
+</div>
+
+<button type="submit" class="btn btn-primary">Add</button>
+</form>
+
+
+
+<% include ./footer_admin.ejs %>

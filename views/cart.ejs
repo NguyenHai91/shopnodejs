@@ -1,0 +1,92 @@
+<% include blocks/header.ejs %>
+<link href="/stylesheets/chatbox.css" rel="stylesheet">
+<% include blocks/navbar.ejs %>
+<% include blocks/menu.ejs %>
+<!-- begin:article -->
+<div class="row">
+  <!-- begin:sidebar -->
+  <div class="col-md-3 col-sm-4 sidebar">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="widget">
+          <div class="widget-title">
+            <h3>Category</h3>
+          </div>
+          <ul class="nav nav-pills nav-stacked">
+            <li class="active"><a href="#">Acessories</a></li>
+            <li><a href="#">Girl</a></li>
+            <li><a href="#">Boy</a></li>
+            <li><a href="#">Edition</a></li>
+          </ul>
+        </div>
+        <!-- break -->
+        <div class="widget">
+          <div class="widget-title">
+            <h3>Payment Confirmation</h3>
+          </div>
+          <p>Already make a payment ? please confirm your payment by filling <a href="confirm.html">this form</a></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- end:sidebar -->
+
+  <!-- begin:content -->
+  <div class="col-md-9 col-sm-8 content">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 style="margin: 0px">Your Cart</h3>
+        <hr />
+
+        <table class="table table-bordered table-striped">
+         <thead>
+          <tr>
+            <th>Product</th>
+            <th>Description</th>
+            <th>Qty</th>
+            <th>Color</th>
+            <th>Size</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% var totalCart = 0 %>
+          <% data.forEach(function (value, key) { %> 
+            <tr>
+            <td><img src="/product/<%= value.item.image %>" class="img-cart" /></td>
+            <td><strong><%= value.item.name %></strong></td>
+            <td>
+            <form class="form-inline">
+            <input idsp= "<%= value.item.id %>" class="form-control" type="text" value="<%= value.quantity %>" name="txtQuant" />
+            <a href="/delete/<%= value.item.id %>" class="btn btn-primary" rel="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
+            </form>
+            </td>
+            <td><%= value.color %></td>
+            <td><%= value.size %></td>
+            <td>$<%= value.item.price %></td>
+            <% var totalItem = value.item.price * value.quantity %>
+            <td>$<%= totalItem %></td>
+            </tr>
+            <% totalCart += totalItem %>
+            <% }); %>
+            <tr>
+            <td colspan="7">&nbsp;</td>
+            </tr>
+            <tr>
+            <td colspan="6" class="text-right"><strong>Total</strong></td>
+            <td>$<%= totalCart %></td>
+            </tr>
+            </tbody>
+            </table>
+            <a href="/" class="btn btn-default">Continue Shopping</a>
+            <a href="/checkout" class="btn btn-primary pull-right">Checkout</a>
+            </div>
+            </div>
+            </div>
+            <!-- end:content -->
+            </div>
+            <!-- end:article -->
+
+            <% include blocks/footer.ejs %>

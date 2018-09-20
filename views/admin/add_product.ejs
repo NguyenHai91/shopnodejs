@@ -1,0 +1,38 @@
+<% include ./header_admin.ejs %>
+
+<form action="/admin/add-product" method="POST" role="form" enctype="multipart/form-data">
+<legend>Add Product</legend>
+
+<div class="form-group">
+<label for="">Cate: </label>
+<select class="form-control" name="slcCate" >
+<% listCates.forEach( function(item) { %>
+	<option value="<%= item.id %>"><%= item.name %></option>
+	<% }); %>
+	</select>
+	</div>
+	<div class="form-group">
+	<label for="">Name Product: </label>
+	<input type="text" class="form-control" id="" placeholder="name product" name="txtName">
+	</div>
+	<div class="form-group">
+	<label for="">Description:</label>
+	<textarea class="form-control" name="txtDesc"></textarea>
+	</div>
+	<div class="form-group">
+	<label for="">Price: </label>
+	<input type="text" class="form-control" placeholder="price" name="numPrice">
+	</div>
+	<div class="form-group">
+	<label for="">Quantity: </label>
+	<input type="text" class="form-control" placeholder="quantity" name="numQuant">
+	</div>
+	<div class="form-group">
+	<label for="">Image:</label>
+	<input type="file" class="form-control" placeholder="Choose image for product" name="fImage">
+	</div>
+
+	<button type="submit" class="btn btn-primary">Add</button>
+	</form>
+
+	<% include ./footer_admin.ejs %>

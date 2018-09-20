@@ -1,0 +1,42 @@
+<% include ./header_admin.ejs %>
+
+<form action="/admin/product/edit/<%= product.id %>" method="POST" role="form" enctype="multipart/form-data">
+	<legend>Edit Product</legend>
+
+	<div class="form-group">
+		<label for="">Cate: </label>
+		<select class="form-control" name="slcCate" >
+			<% listCates.forEach( function(item) { %>
+				<option value="<%= item.id %>"
+				<% if(item.id === product.category_id){ %>
+					selected="selected"
+					<% } %>
+					><%= item.name %></option>
+					<% }); %>
+					</select>
+					</div>
+					<div class="form-group">
+					<label for="">Name Product: </label>
+					<input type="text" class="form-control" value="<%= product.name %>" name="txtName">
+					</div>
+					<div class="form-group">
+					<label for="">Description:</label>
+					<textarea class="form-control" name="txtDesc" ><%= product.description %></textarea>
+					</div>
+					<div class="form-group">
+					<label for="">Price: </label>
+					<input type="text" class="form-control" value="<%= product.price %>" name="numPrice">
+					</div>
+					<div class="form-group">
+					<label for="">Quantity: </label>
+					<input type="text" class="form-control" value="<%= product.quantity %>" name="numQuant">
+					</div>
+					<div class="form-group">
+					<label for="">Image:<%= product.image %> </label>
+					<input type="file" class="form-control" name="fImage">
+					</div>
+
+					<button type="submit" class="btn btn-primary">Edit</button>
+					</form>
+
+					<% include ./footer_admin.ejs %>
